@@ -1,0 +1,136 @@
+:root {
+    background-color: white;
+}
+
+body {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: white;
+    color: black;
+    transition: 0.3s;
+}
+
+/* Acima eu determino as cores padrão da página */
+
+header {
+    display: flex;
+    text-decoration: none;
+    background-color: black;
+    height: 60px;
+    justify-content: center;
+    align-items: center;
+}
+
+header a {
+    text-decoration: none;
+    color: white;
+}
+
+header nav {
+    justify-content: center;
+}
+
+header nav li {
+    list-style-type: none;
+}
+
+header ul {
+    display: flex;
+    gap: 30px;
+    padding: 0;
+}
+
+main {
+    flex: 1;
+    text-align: center;
+}
+
+main button {
+    display: flex;
+    margin: 20px auto;
+    padding: 8px 12px;
+    border-color: black;
+    background-color: white;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    align-items: center;
+    cursor: pointer;
+}
+
+main button:hover {
+    border-color: white;
+    background-color: black;
+    color: white;
+    transform: scale(1.2);
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+}
+
+footer a img {
+    width: 50px;
+    height: 50px;
+}
+
+body.dark-mode {
+    background-color: #121212;
+    color: white;
+}
+
+body.dark-mode main button {
+    background-color: black;
+    color: white;
+    border-color: black;
+}
+
+body.dark-mode main button:hover {
+    background-color: white;
+    color: black;
+    border-color: white;
+    transform: scale(1.2);
+}
+
+body.dark-mode header {
+    background-color: white;
+}
+
+body.dark-mode header a {
+    color: black;
+    background-color: white;
+}
+
+body.dark-mode header a:hover {
+    background-color: black;
+    color: white;
+}
+
+body hr {
+    display: flex;
+    width: 500px;
+    height: 3px;
+    color: black;
+    background-color: black;
+}
+
+body.dark-mode hr {
+    color: white;
+    background-color: white;
+}
+
+main p {
+    text-align: center;
+}
+
+main h2 {
+    padding-left: 20px;
+}
+
+header a:hover {
+    background-color: white;
+    border-radius: 5px;
+    color: black;
+}
