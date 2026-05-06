@@ -1,78 +1,119 @@
+//Botão Modo claro/escuro - 30/04/26 ---------------------------------------------------------------------------------
+
 const botao = document.getElementById("modoClaroEscuro");
-const body = document.body;
+console.log(botao);
 
-botao.addEventListener("click", () => {
-    body.classList.toggle("dark-mode");
+    let claro = true;
+    botao.addEventListener("click", function() {
+    if (claro) {
+        document.body.style.backgroundColor = "black";
+        document.body.style.color = "white";
+        botao.textContent = "Modo Claro";
+        claro = false;
+    } else {
+        document.body.style.backgroundColor = "white";
+        document.body.style.color = "black";
+        botao.textContent = "Modo Escuro";
+        claro = true;
+    }
 });
-
-// Acima é criado o botão que muda o tema da página entre claro e escuro
-
-// ------------------------------------------------------------
-
-// Dados principais da página
-
+//--------------------------------------------------------------------------------------------------------------------
+//Cálculo Data Formatura - 04/05/26 ----------------------------------------------------------------------------------
+// Dados Pessoais-----------------------------------------------------------------------------------------------------
 const NOME = "Maria Vitória";
-let tituloProfissional = "Estudante de programação";
-let minhaBios = "Olá, seja bem-vindo ao meu site pessoal. Aqui você pode conhecer um pouco mais sobre mim, meus estudos e minha evolução na programação.";
-
-let anoFormatura = 2026;
+let tituloProfissional = "Sweet";
+let minhaBio = "Estudante de ADS na proz de Divinópolis - MG";
+let anoFormatura = 2028;
 let mesFormatura = 12;
-let diaFormatura = 31;
+let diaFormatura = 30;
+let anoIngresso = 2025;
+let mesIngresso = 1;
+let diaIngresso = 1;
+//Utilização do Date--------------------------------------------------------------------------------------------------
+let dataAtual = new Date();
+let mesAtual = dataAtual.getMonth() + 1; // Começa por 0, por isso do +1
+let anoAtual = dataAtual.getFullYear();
+let diaAtual = dataAtual.getDate();
+let hoje = diaAtual + mesAtual + anoAtual;
+//--------------------------------------------------------------------------------------------------------------------
+let indefinido;
+let nulo = null;
+let curso = {
+    nome: "Análise e desenvolvimento de sistemas",
+    semestre: 3,
+    disciplinaAtual: "Linguagem de programação"
+};
 
-// A data da formatura precisa seguir o padrão: ano, mês - 1, dia
-// Isso acontece porque no JavaScript os meses começam do 0
-// Janeiro é 0, fevereiro é 1, março é 2 e dezembro é 11
-
-let dataFormatura = new Date(anoFormatura, mesFormatura - 1, diaFormatura);
-let hoje = new Date();
-
-// Zera as horas para o cálculo ficar mais correto
-hoje.setHours(0, 0, 0, 0);
-dataFormatura.setHours(0, 0, 0, 0);
-
-// Calcula a diferença em milissegundos
-let diferencaTempo = dataFormatura - hoje;
-
-// Converte a diferença para dias
-let totalDias = Math.ceil(diferencaTempo / (1000 * 60 * 60 * 24));
-
-// Calcula anos, meses e dias de forma simples e real
-let anosRestantes = dataFormatura.getFullYear() - hoje.getFullYear();
-let mesesRestantes = dataFormatura.getMonth() - hoje.getMonth();
-let diasRestantes = dataFormatura.getDate() - hoje.getDate();
-
-if (diasRestantes < 0) {
-    mesesRestantes--;
-
-    let ultimoDiaMesAnterior = new Date(
-        hoje.getFullYear(),
-        hoje.getMonth() + 1,
-        0
-    ).getDate();
-
-    diasRestantes += ultimoDiaMesAnterior;
-}
-
-if (mesesRestantes < 0) {
-    anosRestantes--;
-    mesesRestantes += 12;
-}
-
-// Caso a data da formatura já tenha passado
-if (totalDias < 0) {
-    anosRestantes = 0;
-    mesesRestantes = 0;
-    diasRestantes = 0;
-    totalDias = 0;
-}
-
-// Mostrando os dados no HTML
+console.log(typeof anoFormatura);
+console.log(typeof NOME);
+console.log(typeof tituloProfissional);
+console.log(typeof minhaBio);
+console.log(typeof anoIngresso);
+console.log(typeof indefinido);
+console.log(typeof nulo);
+console.log(typeof curso);
+//Calculo-------------------------------------------------------------------------------------------------------------
+let anoRestante = anoFormatura - anoAtual;
+let mesRestante = mesFormatura - mesAtual;
+let diaRestante = diaFormatura - diaAtual;
+//--------------------------------------------------------------------------------------------------------------------
+console.log(typeof anoRestante);
+console.log(typeof mesRestante);
+console.log(typeof diaRestante);
 
 document.getElementById("meuNome").innerText = NOME;
-document.getElementById("titulo").innerText = tituloProfissional;
-document.getElementById("minhaBio").innerText = minhaBios;
+document.getElementById("tituloProfissional").innerText = tituloProfissional;
+document.getElementById("minhaBio").innerText = minhaBio;
+document.getElementById("anoFormatura").innerText = `Formatura prevista para: ${diaFormatura}/${mesFormatura}/${anoFormatura}`;
+document.getElementById("anoInfresso").innerText = `Ano de Ingresso: ${anoIngresso}`;
+document.getElementById("curso").innerText = `Curso: ${curso.nome} - Semestre: ${curso.semestre}`;
+document.getElementById("tempoRestanteParaFormatura").innerText = 
+`Tempo restante para a formatura: ${anoRestante} ano(s), ${mesRestante} meses e ${diaRestante} dias`;
+// document.getElementById("tempoRestanteParaFormatura").innerText = `Tempo restante para formatura:`;
 
-document.getElementById("anoFormatura").innerText = `Ano da formatura: ${anoFormatura}`;
-document.getElementById("tempoRestante").innerText = `Tempo restante: ${anosRestantes} ano(s), ${mesesRestantes} mês(es) e ${diasRestantes} dia(s)`;
-document.getElementById("mesRestante").innerText = `Total de dias restantes: ${totalDias} dia(s)`;
-document.getElementById("diasRestantes").innerText = `Data da formatura: ${diaFormatura}/${mesFormatura}/${anoFormatura}`;
+// se anos para formatura por menor que 0 ou 0 não quero q imprima
+if (anoFormatura - anoAtual <=0) {
+    document.getElementById("tempoRestanteParaFormatura")
+} else if (anoFormatura - anoAtual ===1) {
+    document.getElementById("tempoRestanteParaFormatura")
+} else {
+    document.getElementById("tempoRestanteParaFormatura")
+    .innerText = `Tempo restante para formatura: ${anoFormatura - anoAtual} anos`;
+}
+
+let diasRestantes = diaFormatura - diaAtual;
+let mesesRestantes = mesFormatura - mesAtual;
+let anosRestantes = anoFormatura - anoAtual;
+
+if (diasRestantes <=0 && mesesRestantes <=0 && anosRestantes <=0) {
+    document.getElementById("tempoRestanteParaFormatura").innerText = `Curso Conluído!`;
+}
+
+
+// Operadores de comparação
+let nota = 8;
+let aprovado = (nota >= 6)? "Aprovado" : "Reprovado";
+
+document.write(`<p> Nota: ${nota} = ${aprovado} </p>`);
+
+// switch case
+let diaSemana = 4;
+switch (diaSemana) {
+    case 1:
+        document.write("<p>Hoje é Domingo</p>"); break;
+    case 2:
+        document.write("<p>Hoje é Segunda-feira</p>"); break;
+    case 3:
+        document.write("<p>Hoje é Terça-feira</p>"); break;
+    case 4:
+        document.write("<p>Hoje é Quarta-feira</p>"); break;
+    case 5:
+        document.write("<p>Hoje é Quinta-feira</p>"); break;
+    case 6:
+        document.write("<p>Hoje é Sexta-feira</p>"); break;
+    case 7:
+        document.write("<p>Hoje é Sábado</p>"); break; 
+    default:
+        document.write("<p>Dia da semana inválido</p>"); break;
+}
+
