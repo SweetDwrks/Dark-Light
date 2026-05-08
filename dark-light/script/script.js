@@ -8,11 +8,13 @@ console.log(botao);
     if (claro) {
         document.body.style.backgroundColor = "black";
         document.body.style.color = "white";
+        document.body.style.transition = "background-color 2s ease, color 2s ease"; // - - transição suave para mudança de cores
         botao.textContent = "Modo Claro";
         claro = false;
     } else {
         document.body.style.backgroundColor = "white";
-        document.body.style.color = "black";
+        document.body.style.color = "purple";
+        document.body.style.transition = "background-color 2s ease, color 2s ease";
         botao.textContent = "Modo Escuro";
         claro = true;
     }
@@ -175,6 +177,35 @@ function exibirPerfil() {
     resultadoQuiz.textContent = "🔄 Perfil Full Stack — você é dos dois!";
   }
 }
+
+// dia 08/05/2026 -- laços de repetição
+
+/* gatilho inicial/ começo */ /* limite, limitador, roda enquanto */ /* gatilho de incremento, o que acontece a cada rodada */
+for ( let i = 0; i <= 20; i++) {
+    let pares = (i % 2 === 0) ? "par" : "ímpar";
+    console.log(`${i} é ${pares}`);
+} 
+
+let objetc = {
+    nome: "Maria Vitória",
+    idade: 17,
+    curso: "ADS"
+}
+
+for (let chave in objetc) {
+    document.write(`<p>${chave}: ${objetc[chave]}</p>`);
+}
+
+
+let aluno = ["Maria", "João", "Ana", "Lucas", "Carla", "Pedro"];
+for (let contem of aluno) {
+    if (contem === "Maria") {
+        document.write(`<p>${contem} - Presente:</p>`);
+    } else {
+        document.write(`<p>${contem} - Ausente:</p>`);
+    }
+}
+
 
 
 
