@@ -206,6 +206,28 @@ for (let contem of aluno) {
     }
 }
 
+let num = parseInt(prompt("Diga um número par:"));
+while (num % 2 !== 0) {
+    num = parseInt(prompt("Ops, esse número não é par. Tente novamente:"));
+};
 
+do {
+  num = prompt("Diga um número par:")
+} while (num % 2 !== 0);
+
+
+// lista das minhas habilidades através de uma lista, jogando no html usando while, for. for of ou do while o que eu preferir:
+
+let object = {
+    "Habilidades Técnicas": ["HTML", "CSS", "JavaScript", "Python"], // - - Habilidades Técnicas
+    "Habilidades Interpessoais": ["Comunicação", "Trabalho em equipe", "Resolução de problemas"], // - - Habilidades Interpessoais
+    "Habilidades de Aprendizado": ["Curiosidade", "Adaptabilidade", "Autodidatismo"] // - - Habilidades de Aprendizado
+};
+
+for (let categoria in object) { // - - Acessando cada categoria de habilidades
+    document.write(`<h3>${categoria}</h3>`); // - - Acessando cada categoria de habilidades
+    for (let habilidade of object[categoria]) // - - Acessando cada habilidade dentro de cada categoria 
+        document.write(`<p>${habilidade}</p>`); // - - Acessando cada habilidade dentro de cada categoria
+};
 
 
