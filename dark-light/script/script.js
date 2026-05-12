@@ -6,14 +6,17 @@ console.log(botao);
     let claro = true;
     botao.addEventListener("click", function() {
     if (claro) {
+        
         document.body.style.backgroundColor = "black";
         document.body.style.color = "white";
         document.body.style.transition = "background-color 2s ease, color 2s ease"; // - - transição suave para mudança de cores
         botao.textContent = "Modo Claro";
         claro = false;
     } else {
+        
         document.body.style.backgroundColor = "white";
         document.body.style.color = "purple";
+        document.body.style.color = 
         document.body.style.transition = "background-color 2s ease, color 2s ease";
         botao.textContent = "Modo Escuro";
         claro = true;
@@ -231,3 +234,67 @@ for (let categoria in object) { // - - Acessando cada categoria de habilidades
 };
 
 
+// dia 11/05/2026 -- arrays e listas
+
+// let ou const (para definir a variavel) 
+let frutas = ["maçã", "banana", "laranja", "uva", "abacaxi"]; // lista ou array de frutas 
+document.write(`<p>Frutas: ${frutas.join(", ")}</p>`); // - - Imprime a lista de frutas separada por vírgula
+
+/*
+// Acessando elementos da lista
+document.write(`<p>Primeira fruta: ${frutas[0]}</p>`); // - - Acessa o primeiro elemento (maçã)
+document.write(`<p>Última fruta: ${frutas[frutas.length - 1]}</p>`); // - - Acessa o último elemento (abacaxi)
+*/
+
+
+// Modificando elementos da lista - exemplos:
+// pop remove a última fruta da lista
+frutas.pop(); // remove a última fruta da lista (abacaxi)
+document.write(`<p>Frutas após remover a última: ${frutas.join(", ")}</p>`); // - - Imprime a lista de frutas após remoção
+
+// push adiciona uma nova fruta no final da lista
+frutas.push("manga"); // adiciona uma nova fruta no final da lista (manga)
+document.write(`<p>Frutas após adicionar manga: ${frutas.join(", ")}</p>`); // - - Imprime a lista de frutas após adição
+
+// unshift adiciona uma nova fruta no início da lista
+frutas.unshift("morango"); // adiciona uma nova fruta no início da lista (morango)
+document.write(`<p>Frutas após adicionar morango: ${frutas.join(", ")}</p>`); // - - Imprime a lista de frutas após adição
+
+// splice remove a fruta na posição desejada
+frutas.splice(0, 1); // remove a fruta na posição 4 
+document.write(`<p>Frutas após remover laranja: ${frutas.join(", ")}</p>`); // - - Imprime a lista de frutas após remoção
+
+// indexOf retorna o índice de um elemento específico na lista
+frutas.indexOf("banana"); // retorna o índice da fruta "banana" (1)
+document.write(`<p>Índice da banana: ${frutas.indexOf("banana")}</p>`); // - - Imprime o índice da fruta "banana"
+
+// sort ordena a lista em ordem alfabética
+frutas.sort(); // ordena a lista de frutas em ordem alfabética
+document.write(`<p>Frutas ordenadas: ${frutas.join(", ")}</p>`); // - - Imprime a lista de frutas ordenada
+
+// reverse inverte a ordem da lista
+frutas.reverse(); // inverte a ordem da lista de frutas
+document.write(`<p>Frutas em ordem reversa: ${frutas.join(", ")}</p>`); // - - Imprime a lista de frutas em ordem reversa
+
+// length retorna o número de elementos na lista
+frutas.length; // retorna o número de frutas na lista
+document.write(`<p>Número de frutas: ${frutas.length}</p>`); // - - Imprime o número de frutas na lista
+
+// includes verifica se um elemento específico está presente na lista
+frutas.includes("mamão"); // verifica se a fruta "mamão" está na lista (true)
+document.write(`<p>Mamão está na lista? ${frutas.includes("mamão")}</p>`); // - - Imprime se a fruta "mamão" está na lista
+
+// slice retorna uma parte da lista com base em índices específicos
+frutas.slice(2, 1, "kiwi"); // remove a fruta na posição 2 e adiciona "kiwi" no lugar
+document.write(`<p>Frutas após substituir laranja por kiwi: ${frutas.join(", ")}</p>`); // - - Imprime a lista de frutas após substituição
+
+// shift remove a primeira fruta da lista
+frutas.shift(); // remove a primeira fruta da lista (morango)
+document.write(`<p>Frutas após remover a primeira: ${frutas.join(", ")}</p>`); // - - Imprime a lista de frutas após remoção
+
+frutas.forEach(function(fruta) { // - - Itera sobre cada fruta na lista
+    document.write(`<p>${fruta}</p>`); // - - Imprime cada fruta em um parágrafo separado
+});
+
+frutas.splice(2, 1, "melancia"); // remove a fruta na posição 2 e adiciona "melancia" no lugar
+document.write(`<p>Frutas após substituir kiwi por melancia: ${frutas.join(", ")}</p>`); // - - Imprime a lista de frutas após substituição
