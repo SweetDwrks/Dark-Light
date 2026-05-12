@@ -94,7 +94,7 @@ if (diasRestantes <=0 && mesesRestantes <=0 && anosRestantes <=0) {
     document.getElementById("tempoRestanteParaFormatura").innerText = `Curso Conluído!`;
 }
 
-
+/*
 // Operadores de comparação
 let nota = 8;
 let aprovado = (nota >= 6)? "Aprovado" : "Reprovado";
@@ -180,7 +180,7 @@ function exibirPerfil() {
     resultadoQuiz.textContent = "🔄 Perfil Full Stack — você é dos dois!";
   }
 }
-
+*/ 
 // dia 08/05/2026 -- laços de repetição
 
 /* gatilho inicial/ começo */ /* limite, limitador, roda enquanto */ /* gatilho de incremento, o que acontece a cada rodada */
@@ -195,6 +195,7 @@ let objetc = {
     curso: "ADS"
 }
 
+/*
 for (let chave in objetc) {
     document.write(`<p>${chave}: ${objetc[chave]}</p>`);
 }
@@ -232,11 +233,12 @@ for (let categoria in object) { // - - Acessando cada categoria de habilidades
     for (let habilidade of object[categoria]) // - - Acessando cada habilidade dentro de cada categoria 
         document.write(`<p>${habilidade}</p>`); // - - Acessando cada habilidade dentro de cada categoria
 };
-
+*/
 
 // dia 11/05/2026 -- arrays e listas
 
 // let ou const (para definir a variavel) 
+/*
 let frutas = ["maçã", "banana", "laranja", "uva", "abacaxi"]; // lista ou array de frutas 
 document.write(`<p>Frutas: ${frutas.join(", ")}</p>`); // - - Imprime a lista de frutas separada por vírgula
 
@@ -249,6 +251,7 @@ document.write(`<p>Última fruta: ${frutas[frutas.length - 1]}</p>`); // - - Ace
 
 // Modificando elementos da lista - exemplos:
 // pop remove a última fruta da lista
+/*
 frutas.pop(); // remove a última fruta da lista (abacaxi)
 document.write(`<p>Frutas após remover a última: ${frutas.join(", ")}</p>`); // - - Imprime a lista de frutas após remoção
 
@@ -298,3 +301,69 @@ frutas.forEach(function(fruta) { // - - Itera sobre cada fruta na lista
 
 frutas.splice(2, 1, "melancia"); // remove a fruta na posição 2 e adiciona "melancia" no lugar
 document.write(`<p>Frutas após substituir kiwi por melancia: ${frutas.join(", ")}</p>`); // - - Imprime a lista de frutas após substituição
+*/
+
+// lista de objetos preenchendo no html com os meus projetos, inserindo na página html. Usando apenas o que aprendemos hoje, .shift, .push, .pop, .unshift, .splice, .lenght, .indexOf, .sort, .reverse, .includes, .slice, forEach. O que eu preferir:
+
+let projetos = [
+    {
+        nome: "Parking N' Space",
+        descricao: "Sistema para gerenciar vagas de estacionamento, com controle de entrada e saída de veículos.",
+        conhecimentos: ["GitHub", "Pip", "PyInstaller"],
+        tecnologias: ["Python", "Sqlite", "Tkinter", "CustomTkinter", "FPDF", "Pip", "PyInstaller"]
+    }, 
+    {
+        nome: "Controle de Aluguel de Quadras",
+        descricao: "Sistema para gerenciar o aluguel de quadras esportivas, com controle de reservas e pagamentos.",
+        conhecimentos: ["GitHub", "Pip", "PyInstaller"],
+        tecnologias: ["Python", "Sqlite", "Tkinter", "CustomTkinter", "FPDF", "Pip", "PyInstaller"]
+    }, 
+    {
+        nome: "Uber",
+        descricao: "Aplicativo de transporte que conecta passageiros a motoristas, oferecendo uma plataforma de mobilidade urbana.",
+        conhecimentos: ["Bubble", "No Code", "GitHub"],
+        tecnologias: ["Bubble", "No Code", "GitHub"]
+    },
+    {
+        nome: "Calculadora com fatoração",
+        descricao: "Calculadora que realiza operações matemáticas básicas e fatoração de expressões algébricas.",
+        conhecimentos: ["GitHub", "HTML", "CSS", "JavaScript"],
+        tecnologias: ["GitHub", "HTML", "CSS", "JavaScript"]
+    }
+]
+
+projetos.forEach(function(projeto) { // - - Itera sobre cada projeto na lista
+    document.write(`<h3>${projeto.nome}</h3>`); // - - Imprime o nome do projeto como título
+    document.write(`<p>${projeto.descricao}</p>`); // - - Imprime a descrição do projeto em um parágrafo
+    document.write(`<p><strong>Conhecimentos:</strong> ${projeto.conhecimentos.join(", ")}</p>`); // - - Imprime os conhecimentos necessários para o projeto
+    document.write(`<p><strong>Tecnologias:</strong> ${projeto.tecnologias.join(", ")}</p>`); // - - Imprime as tecnologias utilizadas no projeto
+});
+
+// projetos que usam Python usando somente foreach e include:
+document.write(`<h2>Projetos que utilizam Python:</h2>`); // - - Título para a seção de projetos com Python 
+projetos.forEach(function(projeto) { // - - Itera sobre cada projeto na lista
+    if (projeto.tecnologias.includes("Python")) { // - - Verifica se o projeto utiliza Python
+        document.write(`<h3>${projeto.nome}</h3>`); // - - Imprime o nome do projeto como título
+        document.write(`<p>${projeto.descricao}</p>`); // - - Imprime a descrição do projeto em um parágrafo
+        document.write(`<p><strong>Conhecimentos:</strong> ${projeto.conhecimentos.join(", ")}</p>`); // - - Imprime os conhecimentos necessários para o projeto
+        document.write(`<p><strong>Tecnologias:</strong> ${projeto.tecnologias.join(", ")}</p>`); // - - Imprime as tecnologias utilizadas no projeto
+    }
+});
+
+document.write(`<h2>Projetos que utilizam html:</h2>`); // - - Título para a seção de projetos com html
+projetos.forEach(function(projeto) { // - - Itera sobre cada projeto na lista
+    if (projeto.tecnologias.includes("HTML")) { // - - Verifica se o projeto utiliza HTML
+        document.write(`<h3>${projeto.nome}</h3>`); // - - Imprime o nome do projeto como título
+        document.write(`<p>${projeto.descricao}</p>`); // - - Imprime a descrição do projeto em um parágrafo
+        document.write(`<p><strong>Conhecimentos:</strong> ${projeto.conhecimentos.join(", ")}</p>`); // - - Imprime os conhecimentos necessários para o projeto
+        document.write(`<p><strong>Tecnologias:</strong> ${projeto.tecnologias.join(", ")}</p>`); // - - Imprime as tecnologias utilizadas no projeto -- . join transforma o array em uma string, separando os elementos por vírgula e espaço (", ")
+    }
+});
+
+// outra forma de imprimir 
+
+document.createElement("h2").innerText = projetos[0].nome; // - - Cria um elemento h2 e define seu texto como o nome do primeiro projeto
+console.log(projetos[0].descricao); // - - Imprime a descrição do primeiro projeto no console
+console.log(projetos[0].conhecimentos); // - - Imprime os conhecimentos necessários para o primeiro projeto no console
+console.log(projetos[0].tecnologias); // - - Imprime as tecnologias utilizadas no primeiro projeto no console
+
