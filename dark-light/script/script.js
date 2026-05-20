@@ -4,26 +4,25 @@
 
 const botao = document.getElementById("modoClaroEscuro");
 console.log(botao);
-let claro = true;
 
-// função anônima no evento
-botao.addEventListener("click", function () {
-  document.body.style.transition = "background-color 2s ease, color 2s ease";
-
-  if (claro) {
-    document.body.style.backgroundColor = "black";
-    document.body.style.color = "white";
-    botao.textContent = "Modo Claro";
-    claro = false;
-  } else {
-    document.body.style.backgroundColor = "white";
-
-    document.body.style.color = "purple";
-
-    botao.textContent = "Modo Escuro";
-
-    claro = true;
-  }
+    let claro = true;
+    botao.addEventListener("click", function() {
+    if (claro) {
+        
+        document.body.style.backgroundColor = "black";
+        document.body.style.color = "white";
+        document.body.style.transition = "background-color 2s ease, color 2s ease"; // - - transição suave para mudança de cores
+        botao.textContent = "Modo Claro";
+        claro = false;
+    } else {
+        
+        document.body.style.backgroundColor = "white";
+        document.body.style.color = "purple";
+        document.body.style.color = 
+        document.body.style.transition = "background-color 2s ease, color 2s ease";
+        botao.textContent = "Modo Escuro";
+        claro = true;
+    }
 });
 
 // ======================================================================
@@ -37,9 +36,7 @@ botao.addEventListener("click", function () {
 const NOME = "Maria Vitória";
 
 let tituloProfissional = "Sweet";
-
-let minhaBio = "Estudante de ADS na Proz de Divinópolis - MG";
-
+let minhaBio = "Estudante de ADS na proz de Divinópolis - MG";
 let anoFormatura = 2028;
 
 let mesFormatura = 12;
@@ -57,9 +54,7 @@ let diaIngresso = 1;
 // ======================================================================
 
 let dataAtual = new Date();
-
-let mesAtual = dataAtual.getMonth() + 1;
-
+let mesAtual = dataAtual.getMonth() + 1; // Começa por 0, por isso do +1
 let anoAtual = dataAtual.getFullYear();
 
 let diaAtual = dataAtual.getDate();
@@ -71,117 +66,61 @@ let diaAtual = dataAtual.getDate();
 let indefinido;
 
 let nulo = null;
-
-// objeto
 let curso = {
-  nome: "Análise e desenvolvimento de sistemas",
-
-  semestre: 3,
-
-  disciplinaAtual: "Linguagem de programação",
+    nome: "Análise e desenvolvimento de sistemas",
+    semestre: 3,
+    disciplinaAtual: "Linguagem de programação"
 };
 
-// ======================================================================
-// TYPEOF
-// ======================================================================
+console.log(typeof anoFormatura);
+console.log(typeof NOME);
+console.log(typeof tituloProfissional);
+console.log(typeof minhaBio);
+console.log(typeof anoIngresso);
+console.log(typeof indefinido);
+console.log(typeof nulo);
+console.log(typeof curso);
+//Calculo-------------------------------------------------------------------------------------------------------------
+let anoRestante = anoFormatura - anoAtual;
+let mesRestante = mesFormatura - mesAtual;
+let diaRestante = diaFormatura - diaAtual;
+//--------------------------------------------------------------------------------------------------------------------
+console.log(typeof anoRestante);
+console.log(typeof mesRestante);
+console.log(typeof diaRestante);
 
-function mostrarTipos() {
-  console.log(typeof anoFormatura);
+document.getElementById("meuNome").innerText = NOME;
+document.getElementById("tituloProfissional").innerText = tituloProfissional;
+document.getElementById("minhaBio").innerText = minhaBio;
+document.getElementById("anoFormatura").innerText = `Formatura prevista para: ${diaFormatura}/${mesFormatura}/${anoFormatura}`;
+document.getElementById("anoInfresso").innerText = `Ano de Ingresso: ${anoIngresso}`;
+document.getElementById("curso").innerText = `Curso: ${curso.nome} - Semestre: ${curso.semestre}`;
+document.getElementById("tempoRestanteParaFormatura").innerText = 
+`Tempo restante para a formatura: ${anoRestante} ano(s), ${mesRestante} meses e ${diaRestante} dias`;
+// document.getElementById("tempoRestanteParaFormatura").innerText = `Tempo restante para formatura:`;
 
-  console.log(typeof NOME);
-
-  console.log(typeof tituloProfissional);
-
-  console.log(typeof minhaBio);
-
-  console.log(typeof anoIngresso);
-
-  console.log(typeof indefinido);
-
-  console.log(typeof nulo);
-
-  console.log(typeof curso);
+// se anos para formatura por menor que 0 ou 0 não quero q imprima
+if (anoFormatura - anoAtual <=0) {
+    document.getElementById("tempoRestanteParaFormatura")
+} else if (anoFormatura - anoAtual ===1) {
+    document.getElementById("tempoRestanteParaFormatura")
+} else {
+    document.getElementById("tempoRestanteParaFormatura")
+    .innerText = `Tempo restante para formatura: ${anoFormatura - anoAtual} anos`;
 }
 
-mostrarTipos();
+let diasRestantes = diaFormatura - diaAtual;
+let mesesRestantes = mesFormatura - mesAtual;
+let anosRestantes = anoFormatura - anoAtual;
 
-// ======================================================================
-// CALCULAR TEMPO RESTANTE
-// ======================================================================
-
-// calcular o tempo restante para a formatura e imprimir no html o ano, mes e dia restante:
-
-function calcularTempoRestante() {
-  let anosRestantes = anoFormatura - anoAtual;
-
-  let mesesRestantes = mesFormatura - mesAtual;
-
-  let diasRestantes = diaFormatura - diaAtual;
-
-  // ajustar dias negativos
-  if (diasRestantes < 0) {
-    diasRestantes += 30;
-
-    mesesRestantes--;
-  }
-
-  // ajustar meses negativos
-  if (mesesRestantes < 0) {
-    mesesRestantes += 12;
-
-    anosRestantes--;
-  }
-
-  // verificar se já formou
-  if (
-    anosRestantes < 0 ||
-    (anosRestantes === 0 && mesesRestantes === 0 && diasRestantes <= 0)
-  ) {
-    document.getElementById("tempoRestanteParaFormatura").innerText =
-      "Curso Concluído!";
-  } else {
-    document.getElementById("tempoRestanteParaFormatura").innerText =
-      `Tempo restante para formatura:
-        ${anosRestantes} ano(s),
-        ${mesesRestantes} mês(es)
-        e ${diasRestantes} dia(s).`;
-  }
+if (diasRestantes <=0 && mesesRestantes <=0 && anosRestantes <=0) {
+    document.getElementById("tempoRestanteParaFormatura").innerText = `Curso Conluído!`;
 }
 
-calcularTempoRestante();
-
-// ======================================================================
-// MOSTRAR DADOS NO HTML
-// ======================================================================
-
-// função flecha
-const mostrarDados = () => {
-  document.getElementById("meuNome").innerText = NOME;
-
-  document.getElementById("tituloProfissional").innerText = tituloProfissional;
-
-  document.getElementById("minhaBio").innerText = minhaBio;
-
-  document.getElementById("anoFormatura").innerText = `Formatura prevista para:
-    ${diaFormatura}/${mesFormatura}/${anoFormatura}`;
-
-  document.getElementById("anoIngresso").innerText =
-    `Ano de ingresso: ${anoIngresso}`;
-
-  document.getElementById("curso").innerText = `Curso: ${curso.nome}
-    - Semestre: ${curso.semestre}`;
-};
-
-mostrarDados();
-
-// ======================================================================
-// OPERADOR TERNÁRIO
-// ======================================================================
-
-function verificarNota() {
-  let nota = 8;
-
-  let aprovado = nota >= 6 ? "Aprovado" : "Reprovado";
+/*
+// Operadores de comparação
+let nota = 8;
+let aprovado = (nota >= 6)? "Aprovado" : "Reprovado";
 
   console.log(`Nota: ${nota} = ${aprovado}`);
 }
@@ -225,103 +164,72 @@ function mostrarDiaSemana() {
       break;
 
     default:
-      console.log("Dia inválido");
-  }
+        document.write("<p>Dia da semana inválido</p>"); break;
 }
 
-mostrarDiaSemana();
 
-// ======================================================================
-// QUIZ DE PERFIL
-// ======================================================================
 
-const btnVisual = document.getElementById("btn-visual");
+// ─── QUIZ DE PERFIL ───────────────────────────────────────────
+const btnVisual      = document.getElementById("btn-visual");
+const btnLogica      = document.getElementById("btn-logica");
+const resultadoQuiz  = document.getElementById("resultado-quiz");
 
-const btnLogica = document.getElementById("btn-logica");
 
-const resultadoQuiz = document.getElementById("resultado-quiz");
+btnVisual.addEventListener("click", function() {
+  
+  resultadoQuiz.innerHTML = `
+    <strong>🎨 Você tem perfil Front-End!</strong><br>
+    Você curte criar interfaces, trabalhar com cores, layouts e a experiência do usuário.
+    Tecnologias pra você: HTML, CSS, React, Vue.
+  `;
+  resultadoQuiz.style.backgroundColor = "#e8f4fd";
+  resultadoQuiz.style.padding          = "12px";
+  resultadoQuiz.style.borderRadius     = "8px";
+  resultadoQuiz.style.marginTop        = "10px";
+});
 
-let pontosFront = 0;
+btnLogica.addEventListener("click", function() {
+  
+  resultadoQuiz.innerHTML = `
+    <strong>⚙️ Você tem perfil Back-End!</strong><br>
+    Você curte resolver problemas complexos, trabalhar com dados e fazer a mágica acontecer nos bastidores.
+    Tecnologias pra você: Node.js, Python, bancos de dados.
+  `;
+  resultadoQuiz.style.backgroundColor = "#e8f8f0";
+  resultadoQuiz.style.padding          = "12px";
+  resultadoQuiz.style.borderRadius     = "8px";
+  resultadoQuiz.style.marginTop        = "10px";
+});
 
-let pontosBack = 0;
 
-// função normal
+let pontosFront  = 0;
+let pontosBack   = 0;
+
+btnVisual.addEventListener("click", function() {
+  pontosFront++;
+  exibirPerfil();
+});
+
+btnLogica.addEventListener("click", function() {
+  pontosBack++;
+  exibirPerfil();
+});
+
 function exibirPerfil() {
   if (pontosFront > pontosBack) {
-    resultadoQuiz.innerHTML = `
-        <strong>🎨 Perfil Front-End!</strong><br>
-        Você gosta mais da parte visual.
-        `;
+    resultadoQuiz.textContent = "🎨 Perfil Front-End!";
   } else if (pontosBack > pontosFront) {
-    resultadoQuiz.innerHTML = `
-        <strong>⚙️ Perfil Back-End!</strong><br>
-        Você gosta mais da lógica.
-        `;
+    resultadoQuiz.textContent = "⚙️ Perfil Back-End!";
   } else {
-    resultadoQuiz.innerHTML = `
-        <strong>🔄 Perfil Full Stack!</strong><br>
-        Você gosta dos dois.
-        `;
+    resultadoQuiz.textContent = "🔄 Perfil Full Stack — você é dos dois!";
   }
-
-  resultadoQuiz.style.backgroundColor = "#f2f2f2";
-
-  resultadoQuiz.style.padding = "10px";
-
-  resultadoQuiz.style.borderRadius = "10px";
 }
+*/ 
+// dia 08/05/2026 -- laços de repetição
 
-// função flecha
-btnVisual.addEventListener("click", () => {
-  pontosFront++;
-
-  exibirPerfil();
-});
-
-// função anônima
-btnLogica.addEventListener("click", function () {
-  pontosBack++;
-
-  exibirPerfil();
-});
-
-// ======================================================================
-// CLOSURE
-// ======================================================================
-
-// closure = função dentro de função
-
-function contadorCliques() {
-  let total = 0;
-
-  // função dentro da função
-  return function () {
-    total++;
-
-    console.log(`Total de cliques: ${total}`);
-  };
-}
-
-const contar = contadorCliques();
-
-// usando closure nos botões
-btnVisual.addEventListener("click", function () {
-  contar();
-});
-
-btnLogica.addEventListener("click", function () {
-  contar();
-});
-
-// ======================================================================
-// LAÇOS DE REPETIÇÃO - 08/05/26
-// ======================================================================
-
-// FOR
-function mostrarParOuImpar() {
-  for (let i = 0; i <= 20; i++) {
-    let pares = i % 2 === 0 ? "par" : "ímpar";
-
+/* gatilho inicial/ começo */ /* limite, limitador, roda enquanto */ /* gatilho de incremento, o que acontece a cada rodada */
+for ( let i = 0; i <= 20; i++) {
+    let pares = (i % 2 === 0) ? "par" : "ímpar";
     console.log(`${i} é ${pares}`);
   }
 }
@@ -330,21 +238,16 @@ mostrarParOuImpar();
 
 // objeto
 let objetc = {
-  nome: "Maria Vitória",
-
-  idade: 17,
-
-  curso: "ADS",
-};
-
-// FOR IN
-function mostrarObjeto() {
-  for (let chave in objetc) {
-    console.log(`${chave}: ${objetc[chave]}`);
-  }
+    nome: "Maria Vitória",
+    idade: 17,
+    curso: "ADS"
 }
 
-mostrarObjeto();
+/*
+for (let chave in objetc) {
+    document.write(`<p>${chave}: ${objetc[chave]}</p>`);
+}
+
 
 // FOR OF
 let aluno = ["Maria", "João", "Ana", "Lucas", "Carla", "Pedro"];
@@ -356,222 +259,162 @@ function mostrarAlunos() {
     } else {
       console.log(`${contem} - Ausente`);
     }
-  }
 }
 
-mostrarAlunos();
+let num = parseInt(prompt("Diga um número par:"));
+while (num % 2 !== 0) {
+    num = parseInt(prompt("Ops, esse número não é par. Tente novamente:"));
+};
 
-// ======================================================================
-// ARRAYS E LISTAS - 11/05/26
-// ======================================================================
+do {
+  num = prompt("Diga um número par:")
+} while (num % 2 !== 0);
 
-let frutas = ["maçã", "banana", "laranja", "uva", "abacaxi"];
 
-// mostrar lista
-console.log(frutas);
+// lista das minhas habilidades através de uma lista, jogando no html usando while, for. for of ou do while o que eu preferir:
 
-// acessar elementos
-console.log(frutas[0]);
+let object = {
+    "Habilidades Técnicas": ["HTML", "CSS", "JavaScript", "Python"], // - - Habilidades Técnicas
+    "Habilidades Interpessoais": ["Comunicação", "Trabalho em equipe", "Resolução de problemas"], // - - Habilidades Interpessoais
+    "Habilidades de Aprendizado": ["Curiosidade", "Adaptabilidade", "Autodidatismo"] // - - Habilidades de Aprendizado
+};
 
-console.log(frutas[frutas.length - 1]);
+for (let categoria in object) { // - - Acessando cada categoria de habilidades
+    document.write(`<h3>${categoria}</h3>`); // - - Acessando cada categoria de habilidades
+    for (let habilidade of object[categoria]) // - - Acessando cada habilidade dentro de cada categoria 
+        document.write(`<p>${habilidade}</p>`); // - - Acessando cada habilidade dentro de cada categoria
+};
+*/
 
-// pop
-frutas.pop();
+// dia 11/05/2026 -- arrays e listas
 
-console.log(frutas);
+// let ou const (para definir a variavel) 
+/*
+let frutas = ["maçã", "banana", "laranja", "uva", "abacaxi"]; // lista ou array de frutas 
+document.write(`<p>Frutas: ${frutas.join(", ")}</p>`); // - - Imprime a lista de frutas separada por vírgula
 
-// push
-frutas.push("manga");
+/*
+// Acessando elementos da lista
+document.write(`<p>Primeira fruta: ${frutas[0]}</p>`); // - - Acessa o primeiro elemento (maçã)
+document.write(`<p>Última fruta: ${frutas[frutas.length - 1]}</p>`); // - - Acessa o último elemento (abacaxi)
+*/
 
-console.log(frutas);
 
-// unshift
-frutas.unshift("morango");
+// Modificando elementos da lista - exemplos:
+// pop remove a última fruta da lista
+/*
+frutas.pop(); // remove a última fruta da lista (abacaxi)
+document.write(`<p>Frutas após remover a última: ${frutas.join(", ")}</p>`); // - - Imprime a lista de frutas após remoção
 
-console.log(frutas);
+// push adiciona uma nova fruta no final da lista
+frutas.push("manga"); // adiciona uma nova fruta no final da lista (manga)
+document.write(`<p>Frutas após adicionar manga: ${frutas.join(", ")}</p>`); // - - Imprime a lista de frutas após adição
 
-// splice
-frutas.splice(2, 1, "kiwi");
+// unshift adiciona uma nova fruta no início da lista
+frutas.unshift("morango"); // adiciona uma nova fruta no início da lista (morango)
+document.write(`<p>Frutas após adicionar morango: ${frutas.join(", ")}</p>`); // - - Imprime a lista de frutas após adição
 
-console.log(frutas);
+// splice remove a fruta na posição desejada
+frutas.splice(0, 1); // remove a fruta na posição 4 
+document.write(`<p>Frutas após remover laranja: ${frutas.join(", ")}</p>`); // - - Imprime a lista de frutas após remoção
 
-// indexOf
-console.log(frutas.indexOf("banana"));
+// indexOf retorna o índice de um elemento específico na lista
+frutas.indexOf("banana"); // retorna o índice da fruta "banana" (1)
+document.write(`<p>Índice da banana: ${frutas.indexOf("banana")}</p>`); // - - Imprime o índice da fruta "banana"
 
-// sort
-frutas.sort();
+// sort ordena a lista em ordem alfabética
+frutas.sort(); // ordena a lista de frutas em ordem alfabética
+document.write(`<p>Frutas ordenadas: ${frutas.join(", ")}</p>`); // - - Imprime a lista de frutas ordenada
 
-console.log(frutas);
+// reverse inverte a ordem da lista
+frutas.reverse(); // inverte a ordem da lista de frutas
+document.write(`<p>Frutas em ordem reversa: ${frutas.join(", ")}</p>`); // - - Imprime a lista de frutas em ordem reversa
 
-// reverse
-frutas.reverse();
+// length retorna o número de elementos na lista
+frutas.length; // retorna o número de frutas na lista
+document.write(`<p>Número de frutas: ${frutas.length}</p>`); // - - Imprime o número de frutas na lista
 
-console.log(frutas);
+// includes verifica se um elemento específico está presente na lista
+frutas.includes("mamão"); // verifica se a fruta "mamão" está na lista (true)
+document.write(`<p>Mamão está na lista? ${frutas.includes("mamão")}</p>`); // - - Imprime se a fruta "mamão" está na lista
 
-// length
-console.log(frutas.length);
+// slice retorna uma parte da lista com base em índices específicos
+frutas.slice(2, 1, "kiwi"); // remove a fruta na posição 2 e adiciona "kiwi" no lugar
+document.write(`<p>Frutas após substituir laranja por kiwi: ${frutas.join(", ")}</p>`); // - - Imprime a lista de frutas após substituição
 
-// includes
-console.log(frutas.includes("mamão"));
+// shift remove a primeira fruta da lista
+frutas.shift(); // remove a primeira fruta da lista (morango)
+document.write(`<p>Frutas após remover a primeira: ${frutas.join(", ")}</p>`); // - - Imprime a lista de frutas após remoção
 
-// shift
-frutas.shift();
-
-console.log(frutas);
-
-// forEach
-frutas.forEach(function (fruta) {
-  console.log(fruta);
+frutas.forEach(function(fruta) { // - - Itera sobre cada fruta na lista
+    document.write(`<p>${fruta}</p>`); // - - Imprime cada fruta em um parágrafo separado
 });
 
-// ======================================================================
-// LISTA DE PROJETOS
-// ======================================================================
+frutas.splice(2, 1, "melancia"); // remove a fruta na posição 2 e adiciona "melancia" no lugar
+document.write(`<p>Frutas após substituir kiwi por melancia: ${frutas.join(", ")}</p>`); // - - Imprime a lista de frutas após substituição
+*/
+
+// lista de objetos preenchendo no html com os meus projetos, inserindo na página html. Usando apenas o que aprendemos hoje, .shift, .push, .pop, .unshift, .splice, .lenght, .indexOf, .sort, .reverse, .includes, .slice, forEach. O que eu preferir:
 
 let projetos = [
-  {
-    nome: "Parking N' Space",
-
-    descricao: "Sistema para gerenciar vagas de estacionamento.",
-
-    conhecimentos: ["GitHub", "Pip", "PyInstaller"],
-
-    tecnologias: ["Python", "Sqlite", "Tkinter"],
-  },
-
-  {
-    nome: "Controle de Aluguel de Quadras",
-
-    descricao: "Sistema para gerenciar aluguel de quadras.",
-
-    conhecimentos: ["GitHub", "Pip"],
-
-    tecnologias: ["Python", "Sqlite"],
-  },
-
-  {
-    nome: "Uber",
-
-    descricao: "Aplicativo de transporte.",
-
-    conhecimentos: ["Bubble", "No Code"],
-
-    tecnologias: ["Bubble", "GitHub"],
-  },
-
-  {
-    nome: "Calculadora com fatoração",
-
-    descricao: "Calculadora matemática.",
-
-    conhecimentos: ["HTML", "CSS", "JavaScript"],
-
-    tecnologias: ["HTML", "CSS", "JavaScript"],
-  },
-];
-
-// ======================================================================
-// MOSTRAR PROJETOS
-// ======================================================================
-
-function mostrarProjetos() {
-  projetos.forEach(function (projeto) {
-    document.write(`<h2>${projeto.nome}</h2>`);
-
-    document.write(`<p>${projeto.descricao}</p>`);
-
-    document.write(`
-        <p>
-        <strong>Conhecimentos:</strong>
-        ${projeto.conhecimentos.join(", ")}
-        </p>
-        `);
-
-    document.write(`
-        <p>
-        <strong>Tecnologias:</strong>
-        ${projeto.tecnologias.join(", ")}
-        </p>
-        `);
-  });
-}
-
-mostrarProjetos();
-
-// ======================================================================
-// PROJETOS COM PYTHON
-// ======================================================================
-
-document.write(`<h2>Projetos que utilizam Python:</h2>`);
-
-function projetosPython() {
-  projetos.forEach(function (projeto) {
-    if (projeto.tecnologias.includes("Python")) {
-      document.write(`<h3>${projeto.nome}</h3>`);
-
-      document.write(`<p>${projeto.descricao}</p>`);
-
-      document.write(`
-            <p>
-            <strong>Conhecimentos:</strong>
-            ${projeto.conhecimentos.join(", ")}
-            </p>
-            `);
-
-      document.write(`
-            <p>
-            <strong>Tecnologias:</strong>
-            ${projeto.tecnologias.join(", ")}
-            </p>
-            `);
+    {
+        nome: "Parking N' Space",
+        descricao: "Sistema para gerenciar vagas de estacionamento, com controle de entrada e saída de veículos.",
+        conhecimentos: ["GitHub", "Pip", "PyInstaller"],
+        tecnologias: ["Python", "Sqlite", "Tkinter", "CustomTkinter", "FPDF", "Pip", "PyInstaller"]
+    }, 
+    {
+        nome: "Controle de Aluguel de Quadras",
+        descricao: "Sistema para gerenciar o aluguel de quadras esportivas, com controle de reservas e pagamentos.",
+        conhecimentos: ["GitHub", "Pip", "PyInstaller"],
+        tecnologias: ["Python", "Sqlite", "Tkinter", "CustomTkinter", "FPDF", "Pip", "PyInstaller"]
+    }, 
+    {
+        nome: "Uber",
+        descricao: "Aplicativo de transporte que conecta passageiros a motoristas, oferecendo uma plataforma de mobilidade urbana.",
+        conhecimentos: ["Bubble", "No Code", "GitHub"],
+        tecnologias: ["Bubble", "No Code", "GitHub"]
+    },
+    {
+        nome: "Calculadora com fatoração",
+        descricao: "Calculadora que realiza operações matemáticas básicas e fatoração de expressões algébricas.",
+        conhecimentos: ["GitHub", "HTML", "CSS", "JavaScript"],
+        tecnologias: ["GitHub", "HTML", "CSS", "JavaScript"]
     }
-  });
-}
+]
 
-projetosPython();
+projetos.forEach(function(projeto) { // - - Itera sobre cada projeto na lista
+    document.write(`<h3>${projeto.nome}</h3>`); // - - Imprime o nome do projeto como título
+    document.write(`<p>${projeto.descricao}</p>`); // - - Imprime a descrição do projeto em um parágrafo
+    document.write(`<p><strong>Conhecimentos:</strong> ${projeto.conhecimentos.join(", ")}</p>`); // - - Imprime os conhecimentos necessários para o projeto
+    document.write(`<p><strong>Tecnologias:</strong> ${projeto.tecnologias.join(", ")}</p>`); // - - Imprime as tecnologias utilizadas no projeto
+});
 
-// ======================================================================
-// PROJETOS COM HTML
-// ======================================================================
-
-document.write(`<h2>Projetos que utilizam HTML:</h2>`);
-
-function projetosHTML() {
-  projetos.forEach(function (projeto) {
-    if (projeto.tecnologias.includes("HTML")) {
-      document.write(`<h3>${projeto.nome}</h3>`);
-
-      document.write(`<p>${projeto.descricao}</p>`);
-
-      document.write(`
-            <p>
-            <strong>Conhecimentos:</strong>
-            ${projeto.conhecimentos.join(", ")}
-            </p>
-            `);
-
-      document.write(`
-            <p>
-            <strong>Tecnologias:</strong>
-            ${projeto.tecnologias.join(", ")}
-            </p>
-            `);
+// projetos que usam Python usando somente foreach e include:
+document.write(`<h2>Projetos que utilizam Python:</h2>`); // - - Título para a seção de projetos com Python 
+projetos.forEach(function(projeto) { // - - Itera sobre cada projeto na lista
+    if (projeto.tecnologias.includes("Python")) { // - - Verifica se o projeto utiliza Python
+        document.write(`<h3>${projeto.nome}</h3>`); // - - Imprime o nome do projeto como título
+        document.write(`<p>${projeto.descricao}</p>`); // - - Imprime a descrição do projeto em um parágrafo
+        document.write(`<p><strong>Conhecimentos:</strong> ${projeto.conhecimentos.join(", ")}</p>`); // - - Imprime os conhecimentos necessários para o projeto
+        document.write(`<p><strong>Tecnologias:</strong> ${projeto.tecnologias.join(", ")}</p>`); // - - Imprime as tecnologias utilizadas no projeto
     }
-  });
-}
+});
 
-projetosHTML();
+document.write(`<h2>Projetos que utilizam html:</h2>`); // - - Título para a seção de projetos com html
+projetos.forEach(function(projeto) { // - - Itera sobre cada projeto na lista
+    if (projeto.tecnologias.includes("HTML")) { // - - Verifica se o projeto utiliza HTML
+        document.write(`<h3>${projeto.nome}</h3>`); // - - Imprime o nome do projeto como título
+        document.write(`<p>${projeto.descricao}</p>`); // - - Imprime a descrição do projeto em um parágrafo
+        document.write(`<p><strong>Conhecimentos:</strong> ${projeto.conhecimentos.join(", ")}</p>`); // - - Imprime os conhecimentos necessários para o projeto
+        document.write(`<p><strong>Tecnologias:</strong> ${projeto.tecnologias.join(", ")}</p>`); // - - Imprime as tecnologias utilizadas no projeto -- . join transforma o array em uma string, separando os elementos por vírgula e espaço (", ")
+    }
+});
 
-// ======================================================================
-// OUTRA FORMA DE MOSTRAR
-// ======================================================================
+// outra forma de imprimir 
 
-function mostrarPrimeiroProjeto() {
-  console.log(projetos[0].descricao);
+document.createElement("h2").innerText = projetos[0].nome; // - - Cria um elemento h2 e define seu texto como o nome do primeiro projeto
+console.log(projetos[0].descricao); // - - Imprime a descrição do primeiro projeto no console
+console.log(projetos[0].conhecimentos); // - - Imprime os conhecimentos necessários para o primeiro projeto no console
+console.log(projetos[0].tecnologias); // - - Imprime as tecnologias utilizadas no primeiro projeto no console
 
-  console.log(projetos[0].conhecimentos);
-
-  console.log(projetos[0].tecnologias);
-}
-
-mostrarPrimeiroProjeto();
