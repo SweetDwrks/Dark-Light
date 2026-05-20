@@ -1,6 +1,4 @@
-// ======================================================================
-// BOTÃO MODO CLARO / ESCURO - 30/04/26
-// ======================================================================
+//Botão Modo claro/escuro - 30/04/26 ---------------------------------------------------------------------------------
 
 const botao = document.getElementById("modoClaroEscuro");
 console.log(botao);
@@ -24,47 +22,26 @@ console.log(botao);
         claro = true;
     }
 });
-
-// ======================================================================
-// CÁLCULO DATA FORMATURA - 04/05/26
-// ======================================================================
-
-// ======================================================================
-// DADOS PESSOAIS
-// ======================================================================
-
+//--------------------------------------------------------------------------------------------------------------------
+//Cálculo Data Formatura - 04/05/26 ----------------------------------------------------------------------------------
+// Dados Pessoais-----------------------------------------------------------------------------------------------------
 const NOME = "Maria Vitória";
-
 let tituloProfissional = "Sweet";
 let minhaBio = "Estudante de ADS na proz de Divinópolis - MG";
 let anoFormatura = 2028;
-
 let mesFormatura = 12;
-
 let diaFormatura = 30;
-
 let anoIngresso = 2025;
-
 let mesIngresso = 1;
-
 let diaIngresso = 1;
-
-// ======================================================================
-// DATE
-// ======================================================================
-
+//Utilização do Date--------------------------------------------------------------------------------------------------
 let dataAtual = new Date();
 let mesAtual = dataAtual.getMonth() + 1; // Começa por 0, por isso do +1
 let anoAtual = dataAtual.getFullYear();
-
 let diaAtual = dataAtual.getDate();
-
-// ======================================================================
-// VARIÁVEIS
-// ======================================================================
-
+let hoje = diaAtual + mesAtual + anoAtual;
+//--------------------------------------------------------------------------------------------------------------------
 let indefinido;
-
 let nulo = null;
 let curso = {
     nome: "Análise e desenvolvimento de sistemas",
@@ -117,304 +94,64 @@ if (diasRestantes <=0 && mesesRestantes <=0 && anosRestantes <=0) {
     document.getElementById("tempoRestanteParaFormatura").innerText = `Curso Conluído!`;
 }
 
-/*
+
 // Operadores de comparação
 let nota = 8;
 let aprovado = (nota >= 6)? "Aprovado" : "Reprovado";
 
-  console.log(`Nota: ${nota} = ${aprovado}`);
-}
+document.write(`<p> Nota: ${nota} = ${aprovado} </p>`);
 
-verificarNota();
+// switch case
+let diaSemana = dataAtual.getDay() + 1; // getDay() retorna um número de 0 a 6, onde 0 é Domingo, por isso do +1
 
-// ======================================================================
-// SWITCH CASE
-// ======================================================================
-
-function mostrarDiaSemana() {
-  let diaSemana = dataAtual.getDay() + 1;
-
-  switch (diaSemana) {
+switch (diaSemana) {
     case 1:
-      console.log("Hoje é Domingo");
-      break;
-
+        document.write("<p>Hoje é Domingo</p>"); break;
     case 2:
-      console.log("Hoje é Segunda-feira");
-      break;
-
+        document.write("<p>Hoje é Segunda-feira</p>"); break;
     case 3:
-      console.log("Hoje é Terça-feira");
-      break;
-
+        document.write("<p>Hoje é Terça-feira</p>"); break;
     case 4:
-      console.log("Hoje é Quarta-feira");
-      break;
-
+        document.write("<p>Hoje é Quarta-feira</p>"); break;
     case 5:
-      console.log("Hoje é Quinta-feira");
-      break;
-
+        document.write("<p>Hoje é Quinta-feira</p>"); break;
     case 6:
-      console.log("Hoje é Sexta-feira");
-      break;
-
+        document.write("<p>Hoje é Sexta-feira</p>"); break;
     case 7:
-      console.log("Hoje é Sábado");
-      break;
-
+        document.write("<p>Hoje é Sábado</p>"); break; 
     default:
         document.write("<p>Dia da semana inválido</p>"); break;
 }
 
 
 
-// ─── QUIZ DE PERFIL ───────────────────────────────────────────
-const btnVisual      = document.getElementById("btn-visual");
-const btnLogica      = document.getElementById("btn-logica");
-const resultadoQuiz  = document.getElementById("resultado-quiz");
-
-
-btnVisual.addEventListener("click", function() {
-  
-  resultadoQuiz.innerHTML = `
-    <strong>🎨 Você tem perfil Front-End!</strong><br>
-    Você curte criar interfaces, trabalhar com cores, layouts e a experiência do usuário.
-    Tecnologias pra você: HTML, CSS, React, Vue.
-  `;
-  resultadoQuiz.style.backgroundColor = "#e8f4fd";
-  resultadoQuiz.style.padding          = "12px";
-  resultadoQuiz.style.borderRadius     = "8px";
-  resultadoQuiz.style.marginTop        = "10px";
-});
-
-btnLogica.addEventListener("click", function() {
-  
-  resultadoQuiz.innerHTML = `
-    <strong>⚙️ Você tem perfil Back-End!</strong><br>
-    Você curte resolver problemas complexos, trabalhar com dados e fazer a mágica acontecer nos bastidores.
-    Tecnologias pra você: Node.js, Python, bancos de dados.
-  `;
-  resultadoQuiz.style.backgroundColor = "#e8f8f0";
-  resultadoQuiz.style.padding          = "12px";
-  resultadoQuiz.style.borderRadius     = "8px";
-  resultadoQuiz.style.marginTop        = "10px";
-});
-
-
-let pontosFront  = 0;
-let pontosBack   = 0;
-
-btnVisual.addEventListener("click", function() {
-  pontosFront++;
-  exibirPerfil();
-});
-
-btnLogica.addEventListener("click", function() {
-  pontosBack++;
-  exibirPerfil();
-});
-
-function exibirPerfil() {
-  if (pontosFront > pontosBack) {
-    resultadoQuiz.textContent = "🎨 Perfil Front-End!";
-  } else if (pontosBack > pontosFront) {
-    resultadoQuiz.textContent = "⚙️ Perfil Back-End!";
-  } else {
-    resultadoQuiz.textContent = "🔄 Perfil Full Stack — você é dos dois!";
-  }
-}
-*/ 
 // dia 08/05/2026 -- laços de repetição
 
 /* gatilho inicial/ começo */ /* limite, limitador, roda enquanto */ /* gatilho de incremento, o que acontece a cada rodada */
 for ( let i = 0; i <= 20; i++) {
     let pares = (i % 2 === 0) ? "par" : "ímpar";
     console.log(`${i} é ${pares}`);
-  }
-}
+} 
 
-mostrarParOuImpar();
-
-// objeto
 let objetc = {
     nome: "Maria Vitória",
     idade: 17,
     curso: "ADS"
 }
 
-/*
 for (let chave in objetc) {
     document.write(`<p>${chave}: ${objetc[chave]}</p>`);
 }
 
 
-// FOR OF
-let aluno = ["Maria", "João", "Ana", "Lucas", "Carla", "Pedro"];
 
-function mostrarAlunos() {
-  for (let contem of aluno) {
-    if (contem === "Maria") {
-      console.log(`${contem} - Presente`);
-    } else {
-      console.log(`${contem} - Ausente`);
-    }
-}
-
-let num = parseInt(prompt("Diga um número par:"));
+let num = parseInt(prompt("Digite um número par para entrar:"));
 while (num % 2 !== 0) {
-    num = parseInt(prompt("Ops, esse número não é par. Tente novamente:"));
-};
+    num = parseInt(prompt("Número inválido. Digite um número par para entrar:"));
+}
+document.write(`<p>Bem-vindo! Você digitou o número par: ${num}</p>`);
 
 do {
-  num = prompt("Diga um número par:")
+    num = parseInt(prompt("Digite um número par para entrar:"));
 } while (num % 2 !== 0);
-
-
-// lista das minhas habilidades através de uma lista, jogando no html usando while, for. for of ou do while o que eu preferir:
-
-let object = {
-    "Habilidades Técnicas": ["HTML", "CSS", "JavaScript", "Python"], // - - Habilidades Técnicas
-    "Habilidades Interpessoais": ["Comunicação", "Trabalho em equipe", "Resolução de problemas"], // - - Habilidades Interpessoais
-    "Habilidades de Aprendizado": ["Curiosidade", "Adaptabilidade", "Autodidatismo"] // - - Habilidades de Aprendizado
-};
-
-for (let categoria in object) { // - - Acessando cada categoria de habilidades
-    document.write(`<h3>${categoria}</h3>`); // - - Acessando cada categoria de habilidades
-    for (let habilidade of object[categoria]) // - - Acessando cada habilidade dentro de cada categoria 
-        document.write(`<p>${habilidade}</p>`); // - - Acessando cada habilidade dentro de cada categoria
-};
-*/
-
-// dia 11/05/2026 -- arrays e listas
-
-// let ou const (para definir a variavel) 
-/*
-let frutas = ["maçã", "banana", "laranja", "uva", "abacaxi"]; // lista ou array de frutas 
-document.write(`<p>Frutas: ${frutas.join(", ")}</p>`); // - - Imprime a lista de frutas separada por vírgula
-
-/*
-// Acessando elementos da lista
-document.write(`<p>Primeira fruta: ${frutas[0]}</p>`); // - - Acessa o primeiro elemento (maçã)
-document.write(`<p>Última fruta: ${frutas[frutas.length - 1]}</p>`); // - - Acessa o último elemento (abacaxi)
-*/
-
-
-// Modificando elementos da lista - exemplos:
-// pop remove a última fruta da lista
-/*
-frutas.pop(); // remove a última fruta da lista (abacaxi)
-document.write(`<p>Frutas após remover a última: ${frutas.join(", ")}</p>`); // - - Imprime a lista de frutas após remoção
-
-// push adiciona uma nova fruta no final da lista
-frutas.push("manga"); // adiciona uma nova fruta no final da lista (manga)
-document.write(`<p>Frutas após adicionar manga: ${frutas.join(", ")}</p>`); // - - Imprime a lista de frutas após adição
-
-// unshift adiciona uma nova fruta no início da lista
-frutas.unshift("morango"); // adiciona uma nova fruta no início da lista (morango)
-document.write(`<p>Frutas após adicionar morango: ${frutas.join(", ")}</p>`); // - - Imprime a lista de frutas após adição
-
-// splice remove a fruta na posição desejada
-frutas.splice(0, 1); // remove a fruta na posição 4 
-document.write(`<p>Frutas após remover laranja: ${frutas.join(", ")}</p>`); // - - Imprime a lista de frutas após remoção
-
-// indexOf retorna o índice de um elemento específico na lista
-frutas.indexOf("banana"); // retorna o índice da fruta "banana" (1)
-document.write(`<p>Índice da banana: ${frutas.indexOf("banana")}</p>`); // - - Imprime o índice da fruta "banana"
-
-// sort ordena a lista em ordem alfabética
-frutas.sort(); // ordena a lista de frutas em ordem alfabética
-document.write(`<p>Frutas ordenadas: ${frutas.join(", ")}</p>`); // - - Imprime a lista de frutas ordenada
-
-// reverse inverte a ordem da lista
-frutas.reverse(); // inverte a ordem da lista de frutas
-document.write(`<p>Frutas em ordem reversa: ${frutas.join(", ")}</p>`); // - - Imprime a lista de frutas em ordem reversa
-
-// length retorna o número de elementos na lista
-frutas.length; // retorna o número de frutas na lista
-document.write(`<p>Número de frutas: ${frutas.length}</p>`); // - - Imprime o número de frutas na lista
-
-// includes verifica se um elemento específico está presente na lista
-frutas.includes("mamão"); // verifica se a fruta "mamão" está na lista (true)
-document.write(`<p>Mamão está na lista? ${frutas.includes("mamão")}</p>`); // - - Imprime se a fruta "mamão" está na lista
-
-// slice retorna uma parte da lista com base em índices específicos
-frutas.slice(2, 1, "kiwi"); // remove a fruta na posição 2 e adiciona "kiwi" no lugar
-document.write(`<p>Frutas após substituir laranja por kiwi: ${frutas.join(", ")}</p>`); // - - Imprime a lista de frutas após substituição
-
-// shift remove a primeira fruta da lista
-frutas.shift(); // remove a primeira fruta da lista (morango)
-document.write(`<p>Frutas após remover a primeira: ${frutas.join(", ")}</p>`); // - - Imprime a lista de frutas após remoção
-
-frutas.forEach(function(fruta) { // - - Itera sobre cada fruta na lista
-    document.write(`<p>${fruta}</p>`); // - - Imprime cada fruta em um parágrafo separado
-});
-
-frutas.splice(2, 1, "melancia"); // remove a fruta na posição 2 e adiciona "melancia" no lugar
-document.write(`<p>Frutas após substituir kiwi por melancia: ${frutas.join(", ")}</p>`); // - - Imprime a lista de frutas após substituição
-*/
-
-// lista de objetos preenchendo no html com os meus projetos, inserindo na página html. Usando apenas o que aprendemos hoje, .shift, .push, .pop, .unshift, .splice, .lenght, .indexOf, .sort, .reverse, .includes, .slice, forEach. O que eu preferir:
-
-let projetos = [
-    {
-        nome: "Parking N' Space",
-        descricao: "Sistema para gerenciar vagas de estacionamento, com controle de entrada e saída de veículos.",
-        conhecimentos: ["GitHub", "Pip", "PyInstaller"],
-        tecnologias: ["Python", "Sqlite", "Tkinter", "CustomTkinter", "FPDF", "Pip", "PyInstaller"]
-    }, 
-    {
-        nome: "Controle de Aluguel de Quadras",
-        descricao: "Sistema para gerenciar o aluguel de quadras esportivas, com controle de reservas e pagamentos.",
-        conhecimentos: ["GitHub", "Pip", "PyInstaller"],
-        tecnologias: ["Python", "Sqlite", "Tkinter", "CustomTkinter", "FPDF", "Pip", "PyInstaller"]
-    }, 
-    {
-        nome: "Uber",
-        descricao: "Aplicativo de transporte que conecta passageiros a motoristas, oferecendo uma plataforma de mobilidade urbana.",
-        conhecimentos: ["Bubble", "No Code", "GitHub"],
-        tecnologias: ["Bubble", "No Code", "GitHub"]
-    },
-    {
-        nome: "Calculadora com fatoração",
-        descricao: "Calculadora que realiza operações matemáticas básicas e fatoração de expressões algébricas.",
-        conhecimentos: ["GitHub", "HTML", "CSS", "JavaScript"],
-        tecnologias: ["GitHub", "HTML", "CSS", "JavaScript"]
-    }
-]
-
-projetos.forEach(function(projeto) { // - - Itera sobre cada projeto na lista
-    document.write(`<h3>${projeto.nome}</h3>`); // - - Imprime o nome do projeto como título
-    document.write(`<p>${projeto.descricao}</p>`); // - - Imprime a descrição do projeto em um parágrafo
-    document.write(`<p><strong>Conhecimentos:</strong> ${projeto.conhecimentos.join(", ")}</p>`); // - - Imprime os conhecimentos necessários para o projeto
-    document.write(`<p><strong>Tecnologias:</strong> ${projeto.tecnologias.join(", ")}</p>`); // - - Imprime as tecnologias utilizadas no projeto
-});
-
-// projetos que usam Python usando somente foreach e include:
-document.write(`<h2>Projetos que utilizam Python:</h2>`); // - - Título para a seção de projetos com Python 
-projetos.forEach(function(projeto) { // - - Itera sobre cada projeto na lista
-    if (projeto.tecnologias.includes("Python")) { // - - Verifica se o projeto utiliza Python
-        document.write(`<h3>${projeto.nome}</h3>`); // - - Imprime o nome do projeto como título
-        document.write(`<p>${projeto.descricao}</p>`); // - - Imprime a descrição do projeto em um parágrafo
-        document.write(`<p><strong>Conhecimentos:</strong> ${projeto.conhecimentos.join(", ")}</p>`); // - - Imprime os conhecimentos necessários para o projeto
-        document.write(`<p><strong>Tecnologias:</strong> ${projeto.tecnologias.join(", ")}</p>`); // - - Imprime as tecnologias utilizadas no projeto
-    }
-});
-
-document.write(`<h2>Projetos que utilizam html:</h2>`); // - - Título para a seção de projetos com html
-projetos.forEach(function(projeto) { // - - Itera sobre cada projeto na lista
-    if (projeto.tecnologias.includes("HTML")) { // - - Verifica se o projeto utiliza HTML
-        document.write(`<h3>${projeto.nome}</h3>`); // - - Imprime o nome do projeto como título
-        document.write(`<p>${projeto.descricao}</p>`); // - - Imprime a descrição do projeto em um parágrafo
-        document.write(`<p><strong>Conhecimentos:</strong> ${projeto.conhecimentos.join(", ")}</p>`); // - - Imprime os conhecimentos necessários para o projeto
-        document.write(`<p><strong>Tecnologias:</strong> ${projeto.tecnologias.join(", ")}</p>`); // - - Imprime as tecnologias utilizadas no projeto -- . join transforma o array em uma string, separando os elementos por vírgula e espaço (", ")
-    }
-});
-
-// outra forma de imprimir 
-
-document.createElement("h2").innerText = projetos[0].nome; // - - Cria um elemento h2 e define seu texto como o nome do primeiro projeto
-console.log(projetos[0].descricao); // - - Imprime a descrição do primeiro projeto no console
-console.log(projetos[0].conhecimentos); // - - Imprime os conhecimentos necessários para o primeiro projeto no console
-console.log(projetos[0].tecnologias); // - - Imprime as tecnologias utilizadas no primeiro projeto no console
-
+document.write(`<p>Bem-vindo! Você digitou o número par: ${num}</p>`);
